@@ -1,3 +1,17 @@
+
+<style>
+    body{
+        background-color: aqua;
+        padding: 50px;
+    }
+    .young {
+        color: blue;
+    }
+    .not-young {
+        color:red 
+    }
+</style>
+
 <h1>{{ title }}</h1>
 <h2>{{ person.first_name }}</h2>
 <h2>{{ person.last_name }}</h2>
@@ -6,3 +20,37 @@
 <h1>Whit class</h1>
 <h2>{{ person_object.first_name }}</h2>
 <h2>{{ person_object.last_name }}</h2>
+<h2>{{ person_object.full_name }}</h2>
+
+<br>
+<p>{{ person_object.full_name|truncatechars:3 }}</p>
+<p>{{ ll|join:', ' }}</p>
+<p>{{ date }}</p>
+<p>{{ date|date:"D d M Y"  }}</p>
+<p>{{ person_object.age }}</p>
+<p>{{ person_object.age|default:'unknow' }}</p>
+
+<hr>
+
+<h1>Tags</h1>
+
+{% if ages %}
+    <p>{{ ages|join:', ' }}</p>
+{% endif %}
+
+
+<ul>
+    {% for age in ages%}
+        {% if age < 5%}
+                 <li class="young">
+            <strog>{{ age }}</strog>
+        </li>
+        {% else %}
+                 <li class="not-young">
+            <strog>{{ age }}</strog>
+        </li>
+        
+        {% endif %}
+   
+    {% endfor %}
+</ul>
