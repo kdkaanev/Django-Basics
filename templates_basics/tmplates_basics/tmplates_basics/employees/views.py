@@ -25,7 +25,14 @@ def index(request):
         "ll":[1,2,3,4,5,6,7,8,9],
         "date":datetime.date.today(),
         "ages":[1,2,3,4,5,6,7,8,9],
+        "get_params":request.GET,
 
     }
 
     return render(request,"employees/index.html", context)
+
+def employees_details(request, pk):
+    context = {
+        'pk': pk
+    }
+    return render(request, 'details.html', context)
