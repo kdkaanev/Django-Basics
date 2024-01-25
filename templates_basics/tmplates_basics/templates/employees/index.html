@@ -1,16 +1,7 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/site.css' %}">
 
-<style>
-    body{
-        background-color: aqua;
-        padding: 50px;
-    }
-    .young {
-        color: blue;
-    }
-    .not-young {
-        color:red 
-    }
-</style>
+<img height="250" src="{% static 'img/dog.jpg' %}" alt="dog">
 
 <h1>{{ title }}</h1>
 <h2>{{ person.first_name }}</h2>
@@ -49,9 +40,9 @@
                  <li class="not-young">
             <strog>{{ age }}</strog>
         </li>
-        
+
         {% endif %}
-   
+
     {% endfor %}
 </ul>
 {% url 'index' %}
@@ -62,6 +53,12 @@
         <a href="{% url 'index' %}?age={{ age }}">{{ age }}</a>
     </li>
     </ul>
-    
+
 {% endfor %}
 <a href="{% url 'employees_details' pk=7 %}">Go to employee</a>
+
+{{ csrf_token }}
+
+{% csrf_token %}
+<hr>
+{% lorem  3 %}
