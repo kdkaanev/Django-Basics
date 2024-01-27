@@ -1,5 +1,5 @@
-<form action="" method="post">
-    {{ employee_form }}
+<form action="{% url 'index'%}" method="Post">
+    {{ form}}
     <button>Send</button>
     {% csrf_token %}
 </form>

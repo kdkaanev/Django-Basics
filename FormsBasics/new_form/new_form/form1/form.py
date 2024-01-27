@@ -12,3 +12,12 @@ class EmployeeForm(forms.Form):
     age = forms.IntegerField(
         required=True,
     )
+
+    interest = forms.ChoiceField(
+        choices=(
+            ('1', 'Gaming'),
+            ('2', 'Reading'),
+            ('3', 'Move'),
+            ('4', 'Sport'),
+        )
+    )
