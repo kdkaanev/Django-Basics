@@ -1,16 +1,22 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Kanvho's app</title>
+    <title>Kancho's app</title>
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    {% block styles %}{% endblock %}
 </head>
 <body>
     <h1>Welcome to Kancho's app</h1>
 
     {% block content %}
+        <h2>Hello World</h2>
     {% endblock %}
     
-    
+    <p>
+        Hellow World, this is a paragraph of text for testing the base.html
+    </p>
     <footer>
     <ul>
         <li><a href="#">About</a></li>
@@ -21,5 +27,5 @@
 
     
 </body>
-<
+
 </html>

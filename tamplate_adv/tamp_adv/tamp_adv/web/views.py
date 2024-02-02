@@ -13,3 +13,7 @@ def index(request):
         'dog_image': random.choice(dogs),
     }
     return render(request, 'web/web-index.html',context)
+
+
+def about(request):
+    return render(request, 'web/about.html')
