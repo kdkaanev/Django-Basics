@@ -5,9 +5,14 @@
     <meta charset="UTF-8">
     <title>Kancho's app</title>
     <link rel="stylesheet" href="{% static 'base.css' %}">
+    <link rel="stylesheet" href="{% static 'side_bar.css' %}">
+    {% block head %}{% endblock %}
+
     {% block styles %}{% endblock %}
 </head>
 <body>
+
+    {% include 'partial/navigation.html' with title="dog app" %}
     <h1>Welcome to Kancho's app</h1>
 
     {% block content %}
@@ -17,13 +22,9 @@
     <p>
         Hellow World, this is a paragraph of text for testing the base.html
     </p>
-    <footer>
-    <ul>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Team</a></li>
-        <li><a href="#">Company</a></li>
-    </ul>
-</footer>
+    
+    {% block body_end_script %}{% endblock %}
+ {% include 'partial/footer.html' %}
 
     
 </body>

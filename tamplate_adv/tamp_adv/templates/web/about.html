@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% block title %} Home {% endblock %}
+{% block body_end_script %}
+    <script>
+     setTimeout(() => {
+         document.body.innerHTML += '<h1>Hello World</h1>'
+     }, 2000)
+    </script>
+{% endblock %}
 {% block styles %}
     <link rel="stylesheet" href="{% static 'about.css' %}">
 {% endblock %}

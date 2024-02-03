@@ -1,0 +1,22 @@
+{% load static %}
+<header>
+
+    <h1><a href="{% url 'web-index' %}">Kancho's App </a></h1>
+    {% if title %} 
+        {{ title }} 
+    {% else %}
+        Kancho's App
+    {% endif %}
+    {% if request.user.is_authenticated %}
+    {{ request.user }}
+    {% else %}
+    Anonimus
+    {% endif %}
+                        
+    <nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+    </header>

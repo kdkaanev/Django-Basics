@@ -1,0 +1,11 @@
+.root{
+    display: flex;
+    height: 100%;
+}
+.root .left{
+
+    background-color: purple;
+}
+.root .right{
+
+}
