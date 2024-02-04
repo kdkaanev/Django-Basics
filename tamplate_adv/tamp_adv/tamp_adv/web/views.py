@@ -13,12 +13,20 @@ def index(request):
         'Cute',
         'Golden',
     ]
+    numbers = [i for i in range(-10,10)]
     context = {
         'dog_image': random.choice(dogs),
         'name': random.choice(dog_name),
+        'numbers': numbers
     }
     return render(request, 'web/web-index.html',context)
 
 
 def about(request):
     return render(request, 'web/about.html')
+
+def show_bootstrap(request):
+    context = {
+        'has_bootstrap': request.GET.get('bootstrap')
+    }
+    return render(request, 'web/bootstrap.html', context)
