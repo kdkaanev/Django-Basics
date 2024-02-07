@@ -1,6 +1,8 @@
 from django.apps import AppConfig
 
+from forms import new
 
-class WebConfig(AppConfig):
+
+class NewConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'web'
+    name = 'forms.new'

@@ -1,0 +1,23 @@
+<h1>Form</h1>
+
+<form action="{% url 'create_person' %}" method="post">
+    {% csrf_token %}
+    {{ person_form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+
+<h1>Form2</h1>
+
+<form action="{% url 'index' %}" method="post">
+    {% csrf_token %}
+    {{ person_form2.as_p }}
+    <input type="submit" value="Submit">
+</form>
+
+<h1>Form3</h1>
+
+<form action="{% url 'index' %}" method="post">
+    {% csrf_token %}
+    {{ person_form3.as_p }}
+    <input type="submit" value="Submit">
+</form>
