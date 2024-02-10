@@ -16,6 +16,11 @@ class Person(models.Model):
     )
     age = models.IntegerField()
     email = models.EmailField()
+    prifile_image = models.ImageField(
+        upload_to='profile_images',
+        blank=True,
+        null=True
+    )
 
     created_by = models.ForeignKey(
         User, on_delete=DO_NOTHING,

@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import modelform_factory
+from django.forms import modelform_factory, modelformset_factory
 
 from forms.new.models import Person
 
@@ -47,7 +47,7 @@ class PersonForm(forms.ModelForm):
             pass
 
         def save(self, *args, **kwargs):
-            instance = super().save(commit=False)
+            instance = super().save(commit=True, *args, **kwargs)
             if self.user.is_authenticated:
                 instance.created_by = self.user
             instance.save()
@@ -64,5 +64,9 @@ class PersonForm3(ReadonlyFieldsMixin, PersonForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._mark_readonly_fields()
+
+PersonFormSet = modelformset_factory(
+    Person,exclude=('created_by',),extra=2
+)
 
         # self.fields['age'].widget.attrs["readonly"] = True

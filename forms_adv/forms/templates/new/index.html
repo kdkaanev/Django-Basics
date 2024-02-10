@@ -1,6 +1,17 @@
 <h1>Form</h1>
 
 <form action="{% url 'create_person' %}" method="post">
+    <ul>
+        {% for person in person_list %}
+            <li>
+            {% if person.prifile_image %}
+                <img src="{{ person.prifile_image.path }}" height="50">
+        
+            {% endif %}
+                {{ person.name }}
+            </li>
+        {% endfor %}
+    </ul>
     {% csrf_token %}
     {{ person_form.as_p }}
     <input type="submit" value="Submit">
