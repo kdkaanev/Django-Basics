@@ -1,0 +1,15 @@
+{% extends 'web/base.html' %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    
+    <form action="{% url 'todos-list' %}" method="get">
+    {{ filter_form }}
+    <input type="submit">
+    
+
+    </form>
+    {% for todo in object_list %}
+        <li>{{ todo.title }}</li>
+    {% endfor %}
+{% endblock %}
