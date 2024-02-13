@@ -11,12 +11,7 @@ from class_view.web.models import Todo
 
 # Create your views here.
 
-# def index(request):
-#     context = {
-#         'todo_list': [x.title for x in Todo.objects.all()],
-#     }
-#     return HttpResponse(json.dumps(context))
-#
+
 class FilterTodoForm(forms.Form):
     title_pattern = forms.CharField(
         max_length=Todo.MAX_TITLE_LENGTH,
