@@ -1,8 +1,10 @@
 import json
+import random
 
 from django import forms
 from django.http import HttpResponse
 from django.shortcuts import render
+
 from django.urls import reverse_lazy
 from django.views import generic as views
 
@@ -19,11 +21,21 @@ class FilterTodoForm(forms.Form):
     )
     is_done = forms.BooleanField(required=False)
 
+class DetailTodoView(views.DetailView):
+    model = Todo
+    template_name = 'web/details_todo.html'
+
 
 class ListTodoView(views.ListView):
     model = Todo
     queryset = Todo.objects.all()
     template_name = 'web/list_todo.html'
+    paginate_by = 5
+
+
+
+    def get_paginate_by(self, queryset):
+        return super().get_paginate_by(queryset)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

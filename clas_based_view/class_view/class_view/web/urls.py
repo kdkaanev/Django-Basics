@@ -6,4 +6,5 @@ from class_view.web.views import CreateTodoView, ListTodoView
 urlpatterns = [
     path('', ListTodoView.as_view(), name='todos-list'),
     path('create/', CreateTodoView.as_view(), name='todos-create'),
+    path('<int:pk>/', views.DetailTodoView.as_view(), name='todos-details'),
 ]
