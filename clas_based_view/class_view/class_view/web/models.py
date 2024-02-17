@@ -10,11 +10,7 @@ def get_random_hash():
 # Create your models here.
 class Todo(models.Model):
     MAX_TITLE_LENGTH = 24
-    title = models.CharField(
-        max_length=MAX_TITLE_LENGTH,
-        null=False,
-        blank=False
-    )
+    MAX_TENANT_LENGTH = 24
     description = models.TextField()
     is_done = models.BooleanField(
         null=False,
@@ -25,6 +21,13 @@ class Todo(models.Model):
     slug = models.SlugField(
         editable=False,
         default='asd'
+    )
+
+    tenant = models.CharField(
+        max_length=MAX_TITLE_LENGTH,
+        null=True,
+        blank=True,
+        default=None,
     )
 
     def save(self, *args, **kwargs):

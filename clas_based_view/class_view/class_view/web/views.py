@@ -24,6 +24,20 @@ class FilterTodoForm(forms.Form):
 class DetailTodoView(views.DetailView):
     model = Todo
     template_name = 'web/details_todo.html'
+    slug_field = 'slug'
+    query_pk_and_slug = True
+
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        tenant = self.request.GET.get('tenant', None)
+        if tenant:
+            queryset = queryset.filter(tenant=tenant)
+        return queryset
+
 
 
 class ListTodoView(views.ListView):
@@ -65,7 +79,8 @@ class ListTodoView(views.ListView):
     def get_is_done(self):
         return self.request.GET.get('is_done', None) == 'on'
 
-
+class HttpCreatedResponse(HttpResponse):
+    status_code = 201
 class CreateTodoView(views.CreateView):
     model = Todo
     fields = ['title', 'description', 'is_done']
@@ -73,3 +88,4 @@ class CreateTodoView(views.CreateView):
     template_name = 'web/create_todo.html'
 
     success_url = reverse_lazy('todos-list')
+    response_class = HttpCreatedResponse
