@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+      <!-- End Navigation Bar -->
+
+      <!-- Main Content -->
+      <!--Create Page-->
+{% block main_content %}
+      <section class="createPage">
+        <form action="{% url 'create-album' %}" method="post" enctype="multipart/form-data" >
+          <fieldset>
+              {{ form }}
+              {% csrf_token %}
+                <button class="add-album" type="submit">Add New Album</button>
+          </fieldset>
+        </form>
+      </section>
+{% endblock %}
