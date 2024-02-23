@@ -4,18 +4,18 @@ from django.db import models
 from prep.user_profile.models import Profile
 
 # Create your models here.
+class Genre(models.TextChoices):
+    POP = "Pop Music"
+    JAZZ = "Jazz Music"
+    ROCK = "Rock Music"
+    HIPHOP = "Hip Hop Music"
+    RNB = "R&B Music"
+    COUNTRY = "Country Music"
+    DANCE = "Dance Music"
+    OTHER = "Other"
 
 MIN_PRICE = 0.0
-CHOICES_GENRE = (
-    ("Pop", "Pop Music"),
-    ("Jazz", "Jazz Music"),
-    ("Rock", "Rock Music"),
-    ("Hiphop", "Hip Hop Music"),
-    ("R&B", "R&B Music"),
-    ("Country", "Country Music"),
-    ("Dance", "Dance Music"),
-    ("Other", "Other"),
-)
+
 class Album(models.Model):
     album_name = models.CharField(
         max_length=30,
@@ -33,7 +33,7 @@ class Album(models.Model):
     )
     genre = models.CharField(
         max_length=30,
-        choices=CHOICES_GENRE,
+        choices=Genre.choices,
         null=False,
         blank=False,
         verbose_name='Genre',

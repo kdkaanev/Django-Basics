@@ -15,12 +15,12 @@
       <header>
         <nav>
           <img src="{% static '/images/headphones.png' %}" alt="headphones" />
-          <a href="#">Home</a>
+          <a href="{% url 'index' %}">Home</a>
           <ul></ul>
           <ul>
             <!--Only for user with created profile-->
             <li><a href="{% url 'create-album' %}">Create Album</a></li>
-            <li><a href="#">Profile</a></li>
+            <li><a href="{% url 'details' %}">Profile</a></li>
           </ul>
         </nav>
       </header>
