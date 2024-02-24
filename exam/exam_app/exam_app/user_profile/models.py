@@ -35,6 +35,7 @@ class Profile(models.Model):
         null=False,
         max_length=20,
 
+
     )
     first_name = models.CharField(
         blank=True,
@@ -50,4 +51,6 @@ class Profile(models.Model):
         blank=True,
         null=True,
     )
+
+
 

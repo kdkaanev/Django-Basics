@@ -1,62 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/static/style/style.css" />
-    <title>WorldOfSpeed</title>
-  </head>
-
-  <body>
-    <div id="box">
-      <header>
-        <!-- Navigation Bar -->
-        <h1>
-          <a class="index-navigation" href="#"
-          ><span>World of Speed</span></a
-        >
-        </h1>
-        <nav>
-          <a href="#">Catalogue</a>
-          <a href="#">Create Car</a>
-          <a href="#">Profile</a>
-        </nav>
-      </header>
+{% extends 'base.html' %}
+{% block main_content %}
+    {% load static %}
 
       <!-- profile details section -->
       <section id="car-details">
         <h1>Profile Details</h1>
         <div class="info-section">
           <div class="car-header">
-            <!-- default profile image (if the user does NOT have any)-->
+           {% if object.profile_picture %} <!-- default profile image (if the user does NOT have any)-->
             <img
               class="car-img"
-              src="/static/images/default-profile.png"
+              src="{{ object.profile_picture}}"
               alt="profile-image"
             />
+              {% endif %}
             <!-- if the user has a profile image -->
-            <img class="car-img" src="" alt="profile-image" />
+          {% if object.first_name or object.last_name %}
             <!-- user full name (if any) -->
-            <h1>Ivan Ivanov</h1>
+            <h1>{{ object.first_name }} {{ object.last_name }}</h1>
+            {% endif %}
             <!-- user username -->
-            <p class="description">Username: test_user</p>
+            <p class="description">Username: {{ object.username }}</p>
             <!-- user email -->
-            <p class="description">Email: test@test.com</p>
+            <p class="description">Email: {{ object.email }}</p>
             <!-- user age -->
-            <p class="description">Age: 21</p>
-            <!-- total price of all cars -->
-            <p class="description">Total price: 398000.000</p>
-            <!-- Edit/Delete buttons -->
+            <p class="description">Age: {{ object.age }}</p>
+            <!-- total price of all cars -->{# <TODO:add price #}
+            <p class="description">Total price: {{ object.car_set.count }}</p>
             <div class="buttons">
-              <a href="#" class="edit-button">Edit</a>
-              <a href="#" class="delete-button">Delete</a>
+                
+              <a href="{% url 'edit-profile'%}" class="edit-button">Edit</a>
+              <a href="{% url 'delete-profile' %}" class="delete-button">Delete</a>
             </div>
           </div>
         </div>
       </section>
 
       <!-- footer -->
-      <footer>&copy;SoftUni Team 2024. All rights reserved.</footer>
-    </div>
-  </body>
-</html>
+   {% endblock %}
